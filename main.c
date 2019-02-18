@@ -2,24 +2,21 @@
 #include "SysClock.h"
 #include "LED.h"
 #include "UART.h"
+#include "command.h"
 
 #include <string.h>
 #include <stdio.h>
 
-char RxComByte = 0;
-uint8_t buffer[BufferSize];
-char str[] = "Give Red LED control input (Y = On, N = off):\r\n";
+
 
 int main(void){
-	char rxByte;
-	int		a ;
-	int		n ;
-	int		i ;
-	float b;
+	
 	
 	System_Clock_Init(); // Switch System Clock = 80 MHz
 	LED_Init();
 	UART2_Init();
+	test();
+	flash();
 		
 	/*
 	forever loop
@@ -35,21 +32,7 @@ If loop counter is 1000 then change state of LEDs and reset counter to 0
 end of forever loop
 	*/
 
-while (1){
-	rxByte = USART_Read(USART2); //Read byte
-	if (rxByte != 0){
-		if(rxByte == '\n' || rxByte = '\r'){ //If enter, check the command
-			//check command
-		}
-		else if (rxByte == '\b'){ //If backspace, remove the last character
-			buffer = buffer[]
-			USART_Write(USART2, buffer, n);
-		}
-		else{
 
-		}
-	}
-}
 
 
 
@@ -77,4 +60,3 @@ while (1){
 //			USART_Write(USART2, (uint8_t *)"LED is on\r\n\r\n", 15);
 //		}
 }
-
